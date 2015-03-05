@@ -36,7 +36,7 @@ func main() {
 	}
 
 	queueURL := getQueueRes.QueueURL
-	log.Println(*queueURL)
+	log.Println("QueueURL: " + *queueURL)
 
 	for true {
 		log.Println("Checking queue...")
