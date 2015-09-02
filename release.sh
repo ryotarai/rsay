@@ -1,11 +1,7 @@
 #!/bin/sh
-set -e
+set -ex
 gox -os darwin -output "pkg/{{.Dir}}_{{.OS}}_{{.Arch}}"
 
 VERSION="$(git tag -l --points-at HEAD | grep ^v)"
-if [ "_$VERSION" = "_" ]; then
-    echo "no tag"
-    exit 1
-fi
-
+git push --tags origin master
 ghr -u ryotarai $VERSION pkg/
